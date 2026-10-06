@@ -48,6 +48,15 @@ Render 설정: Build `pip install -r requirements.txt` · Start `uvicorn main:ap
 ## 실습 기록
 
 ### ① 결과 확인
+
+**Supabase Table Editor — `transactions`** (API로 넣은 거래 2건)
+
+![Supabase transactions 테이블](transaction.png)
+
+**Supabase Table Editor — `accounts`** (id 5 「배포테스트」는 Render 배포 주소에서 POST로 생성)
+
+![Supabase accounts 테이블](accounts.png)
+
 - 로컬 API로 넣은 거래 2건(점심 -12,000 / 지하철 -1,500)이 Supabase `transactions` 테이블에 저장됨.
 - `GET /accounts/1/detail` → 계좌 1에 거래 2건이 중첩되어 반환됨.
 - `GET /stats/by-category` → `[{"category":"교통","total":-1500,"count":1},{"category":"식비","total":-12000,"count":1}]`
