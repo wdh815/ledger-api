@@ -1,4 +1,4 @@
-GitHub: https://github.com/wdh815/ledger-api · Render: (배포 후 기입)
+GitHub: https://github.com/wdh815/ledger-api · Render: https://ledger-api-piaz.onrender.com/docs
 
 # 가계부 API — FastAPI + Supabase(PostgreSQL)
 
@@ -52,7 +52,7 @@ Render 설정: Build `pip install -r requirements.txt` · Start `uvicorn main:ap
 - `GET /accounts/1/detail` → 계좌 1에 거래 2건이 중첩되어 반환됨.
 - `GET /stats/by-category` → `[{"category":"교통","total":-1500,"count":1},{"category":"식비","total":-12000,"count":1}]`
 - `POST /transfers?from_id=1&to_id=2&amount=100000` → 계좌1 1,500,000→1,400,000 / 계좌2 1,500,000→1,600,000.
-- 배포 후 Render `/docs`의 `GET /accounts`가 같은 Supabase 계좌를 반환하는 것을 확인.
+- 배포 후 Render `/docs`의 `GET /accounts`가 로컬에서 만든 Supabase 계좌(id 1~4)를 그대로 반환하고, Render에서 `POST /accounts`로 만든 「배포테스트」(id 5)가 Supabase `accounts` 테이블에 바로 나타나는 것을 확인.
 
 ### ② 핵심 개념 되새김
 - **계좌·거래를 두 테이블로 나눈 이유(1:N)**: 한 계좌에 거래가 여러 건 붙으므로, 거래는 계좌 id(외래키)만 가리키게 해서 계좌 정보 중복을 없애고 "없는 계좌의 거래"를 DB가 막도록 했다.
